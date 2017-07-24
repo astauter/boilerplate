@@ -4,18 +4,21 @@
   "description": "",
   "main": "start.js",
   "scripts": {
-    "start": "webpack -w & nodemon"
+    "start": "webpack -w & nodemon",
+    "test": "mocha ./db/models/user.spec.js --compilers js:babel-register --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chai": "^4.1.0",
     "connect-session-sequelize": "^4.1.0",
     "crypto": "0.0.3",
     "express": "^4.15.3",
     "express-session": "^1.15.4",
     "lodash": "^4.17.4",
+    "mocha": "^3.4.2",
     "morgan": "^1.8.2",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",

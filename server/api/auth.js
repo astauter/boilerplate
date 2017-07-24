@@ -12,7 +12,7 @@ router.put('/login', (req, res, next) => {
     } else if (!user.correctPassword(req.body.password)) {
       res.status(401).send('Incorrect password');
     } else {
-      req.login((user, err) => {
+      req.logIn(user, err => {
         if (err) next(err);
         else res.json(user);
       })
@@ -22,9 +22,10 @@ router.put('/login', (req, res, next) => {
 })
 
 router.post('/signup', (req, res, next) => {
+  console.log(req.body)
   User.create(req.body)
   .then(user => {
-    req.login((user, err) => {
+    req.logIn(user, err => {
       if (err) next(err);
       else res.json(user.sanitize());
     });
