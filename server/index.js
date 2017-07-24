@@ -2,6 +2,8 @@ const path = require('path');
 const morgan = require('morgan')
 const Express = require('express');
 const bodyParser = require('body-parser')
+
+
 let app = Express();
 
 app.use(morgan('dev'));
@@ -9,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(Express.static(path.join(__dirname, '../public')));
+
+app.use(require('./authMiddleware'))
 
 app.use('/api', require('./api'))
 
